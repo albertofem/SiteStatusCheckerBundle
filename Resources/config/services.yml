@@ -1,0 +1,7 @@
+parameters:
+    afm.site_status_checker.checker.class: AFM\Bundle\SiteStatusCheckerBundle\Service\StatusChecker
+
+services:
+    afm.site_status_checker.checker:
+        class: %afm.site_status_checker.checker.class%
+        arguments: [%afm.site_status_checker.token%, %afm.site_status_checker.checkers%, @service_container]

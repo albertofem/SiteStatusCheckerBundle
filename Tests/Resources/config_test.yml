@@ -1,0 +1,16 @@
+framework:
+    secret: test
+    test: ~
+
+site_status_checker:
+    token: my_secure_token
+    checkers:
+        - doctrine
+
+doctrine:
+    dbal:
+        default_connection: default
+        connections:
+            default:
+                driver:   pdo_sqlite
+                path:     %kernel.cache_dir%/test.db

@@ -1,7 +1,7 @@
 {
     "name": "albertofem/sitestatuschecker-bundle",
     "license": "MIT",
-    "keywords": ["status checker newrelic symfony"],
+    "keywords": ["status", "checker", "newrelic", "symfony", "bundle"],
     "authors": [
         {
             "name": "Alberto Fernández",

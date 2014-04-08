@@ -50,9 +50,11 @@ class StatusChecker
 
         foreach($this->getCheckers() as $checker)
         {
-            $checkerStatus = $this->container->get($checker)->getStatus();
+            /** @var CheckerInterface $checker */
+            $checker = $this->container->get($checker);
+            $checkerStatus = $checker->getStatus();
 
-            $statuses[] = $checker->getStatus();
+            $statuses[$checker->getName()] = $checkerStatus->getData();
             $status = $status && $checkerStatus->getStatus();
         }
 

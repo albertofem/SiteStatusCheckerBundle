@@ -1,5 +1,5 @@
 parameters:
-    afm.site_status_checker.checker.doctrine.class: AFM\Bundle\SiteStatusCheckerBundle\Checker\Doctrine
+    afm.site_status_checker.checker.doctrine.class: AFM\Bundle\SiteStatusCheckerBundle\Checker\DoctrineChecker
 
 services:
     afm.site_status_checker.checker.doctrine:

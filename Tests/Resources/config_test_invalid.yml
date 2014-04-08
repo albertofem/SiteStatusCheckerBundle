@@ -1,0 +1,9 @@
+imports:
+    - { resource: config_test.yml }
+
+# this doctrine connection will always fail
+doctrine:
+    dbal:
+        connections:
+            default:
+                path: /var/invalid/directory/test.db

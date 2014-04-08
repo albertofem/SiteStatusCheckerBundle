@@ -1,6 +1,8 @@
 framework:
     secret: test
     test: ~
+    router:
+        resource: "%kernel.root_dir%/Resources/routing.yml"
 
 site_status_checker:
     token: my_secure_token
@@ -12,5 +14,5 @@ doctrine:
         default_connection: default
         connections:
             default:
-                driver:   pdo_sqlite
-                path:     %kernel.cache_dir%/test.db
+                driver: pdo_sqlite
+                path: %kernel.cache_dir%/test.db

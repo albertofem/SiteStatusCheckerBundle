@@ -1,0 +1,3 @@
+_status_checker:
+    path: /check/{token}
+    defaults: { _controller: SiteStatusCheckerBundle:StatusChecker:check }

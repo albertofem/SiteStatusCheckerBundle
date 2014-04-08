@@ -1,0 +1,3 @@
+_status_checker:
+    resource: "@SiteStatusCheckerBundle/Resources/config/routing.yml"
+    prefix: /status

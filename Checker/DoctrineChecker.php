@@ -47,17 +47,22 @@ class DoctrineChecker implements CheckerInterface
             try
             {
                 $connection->connect();
+                $connection->close();
+
+                $data[$connection->getHost()] = true;
             }
             catch (\Exception $exception)
             {
                 $data[$connection->getHost()] = false;
                 $status = false;
             }
-
-            $connection->close();
-            $data[$connection->getHost()] = true;
         }
 
         return new Status($status, $data);
+    }
+
+    public function getName()
+    {
+        return 'doctrine';
     }
 } 

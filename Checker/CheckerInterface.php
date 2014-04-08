@@ -21,4 +21,9 @@ interface CheckerInterface
      * @return Status
      */
     public function getStatus();
+
+    /**
+     * @return string
+     */
+    public function getName();
 } 

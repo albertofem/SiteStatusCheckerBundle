@@ -34,11 +34,11 @@ class SiteStatusCheckerExtension extends Extension
 
         $container->setParameter("afm.site_status_checker.token", $configuration['token']);
 
-        foreach($configuration['checkers'] as $checker)
+        foreach($configuration['checkers'] as $key => $checker)
         {
             if(isset($this->internalCheckers[$checker]))
             {
-                $configuration[$checker] = $this->internalCheckers[$checker];
+                $configuration['checkers'][$key] = $this->internalCheckers[$checker];
                 $loader->load($checker . ".yml");
             }
         }

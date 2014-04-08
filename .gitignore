@@ -1,4 +1,4 @@
 vendor/
 phpunit.xml
-Tests/cache
+Tests/cache*
 Tests/logs

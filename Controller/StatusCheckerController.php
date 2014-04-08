@@ -11,10 +11,13 @@
 
 namespace AFM\Bundle\SiteStatusCheckerBundle\Controller;
 
+use AFM\Bundle\SiteStatusCheckerBundle\Exception\InvalidTokenException;
 use AFM\Bundle\SiteStatusCheckerBundle\Service\StatusChecker;
+use AFM\Bundle\SiteStatusCheckerBundle\Status\Status;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 use Symfony\Component\HttpFoundation\JsonResponse;
+use Symfony\Component\HttpFoundation\Response;
 
 class StatusCheckerController extends Controller
 {
@@ -36,11 +39,15 @@ class StatusCheckerController extends Controller
         {
             $status = $this->statusChecker->performStatusCheck($token);
         }
+        catch(InvalidTokenException $exception)
+        {
+            return new JsonResponse("", 403);
+        }
         catch(\Exception $exception)
         {
-            $status = false;
+            return new JsonResponse("", 500);
         }
 
-        return new JsonResponse($status->getData(), $status ? 200 : 500);
+        return new JsonResponse($status->getData(), 200);
     }
 } 

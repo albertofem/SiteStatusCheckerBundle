@@ -55,8 +55,8 @@ Feel free to extend these checkers replacing it's classes or registering another
 
 ```yaml
 status_checker:
-        resource: "@SiteStatusCheckerBundle/Resources/config/routing.yml"
-        prefix: /status
+    resource: "@SiteStatusCheckerBundle/Resources/config/routing.yml"
+    prefix: /status
 ```
 
 This will create a route under your prefix: `/status/check/{token}` which will return appropiate response codes:

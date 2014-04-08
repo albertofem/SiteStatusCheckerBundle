@@ -18,10 +18,12 @@ Install it:
 
 Add it to your bundles:
 
-    $bundles = array(
-        ...,
-        new AFM\Bundle\SiteStatusCheckerBundle\SiteStatusCheckerBundle()
-    );
+```php
+$bundles = array(
+    ...,
+    new AFM\Bundle\SiteStatusCheckerBundle\SiteStatusCheckerBundle()
+);
+```
 
 Usage
 -----
@@ -35,11 +37,13 @@ Usage
 
 You can register `checkers` referencing services than implements `CheckerInterface`:
 
-    site_status_checker:
-        token: my_secure_token
-        checkers:
-            - doctrine
-            - my_custom_service # CheckInterface implemented
+```yaml
+site_status_checker:
+    token: my_secure_token
+    checkers:
+        - doctrine
+        - my_custom_service # CheckInterface implemented
+```
 
 There are a number of bundled checkers. You only have to reference them in your checkers by writing their names:
 
@@ -49,9 +53,11 @@ Feel free to extend these checkers replacing it's classes or registering another
 
 2. Register the controller in your routes:
 
-    _status_checker:
+```yaml
+status_checker:
         resource: "@SiteStatusCheckerBundle/Resources/config/routing.yml"
         prefix: /status
+```
 
 This will create a route under your prefix: `/status/check/{token}` which will return appropiate response codes:
 

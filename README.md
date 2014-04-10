@@ -28,12 +28,14 @@ $bundles = array(
 Usage
 -----
 
-1. Configure it:
+### Configure it:
 
-    site_status_checker:
-        token: my_secure_token
-        checkers:
-            - doctrine
+```yaml
+site_status_checker:
+    token: my_secure_token
+    checkers:
+        - doctrine
+```
 
 You can register `checkers` referencing services than implements `CheckerInterface`:
 
@@ -49,9 +51,9 @@ There are a number of bundled checkers. You only have to reference them in your 
 
 * Doctrine: Performs database connection checks. Usage: `doctrine`
 
-Feel free to extend these checkers replacing it's classes or registering another service and using it instead.
+You can extend these checkers replacing their classes or registering another service and using it instead.
 
-2. Register the controller in your routes:
+### Register the controller in your routes:
 
 ```yaml
 status_checker:

@@ -27,9 +27,6 @@ class Configuration implements ConfigurationInterface
         $rootNode
             ->children()
                 ->scalarNode("token")->isRequired()->cannotBeEmpty()->end()
-                ->arrayNode("checkers")
-                    ->prototype('scalar')->cannotBeEmpty()->end()
-                ->end()
             ->end()
         ->end();
 

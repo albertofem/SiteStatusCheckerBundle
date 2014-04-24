@@ -25,6 +25,7 @@ class AppKernel extends Kernel
             new \Symfony\Bundle\FrameworkBundle\FrameworkBundle(),
             new \Doctrine\Bundle\DoctrineBundle\DoctrineBundle(),
             new \AFM\Bundle\SiteStatusCheckerBundle\SiteStatusCheckerBundle(),
+            new \Liip\MonitorBundle\LiipMonitorBundle()
         );
     }
 

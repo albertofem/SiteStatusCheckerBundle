@@ -21,23 +21,14 @@ use Symfony\Component\HttpFoundation\Response;
 
 class StatusCheckerController extends Controller
 {
-    /**
-     * @var StatusChecker
-     */
-    protected $statusChecker;
-
-    public function setContainer(ContainerInterface $container = null)
-    {
-        parent::setContainer($container);
-
-        $this->statusChecker = $container->get('afm.site_status_checker.checker');
-    }
-
     public function checkAction($token)
     {
+        /** @var StatusChecker $checker */
+        $checker = $this->get('afm.site_status_checker.checker');
+
         try
         {
-            $status = $this->statusChecker->performStatusCheck($token);
+            $status = $checker->performStatusCheck($token);
         }
         catch(InvalidTokenException $exception)
         {
@@ -48,6 +39,6 @@ class StatusCheckerController extends Controller
             return new Response("", 500);
         }
 
-        return new JsonResponse($status->getData(), 200);
+        return new Response("", $status ? 200 : 500);
     }
 } 

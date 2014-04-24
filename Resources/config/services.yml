@@ -4,4 +4,4 @@ parameters:
 services:
     afm.site_status_checker.checker:
         class: %afm.site_status_checker.checker.class%
-        arguments: [%afm.site_status_checker.token%, %afm.site_status_checker.checkers%, @service_container]
+        arguments: [%afm.site_status_checker.token%, @liip_monitor.runner]

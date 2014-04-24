@@ -15,6 +15,7 @@ use AFM\Bundle\SiteStatusCheckerBundle\Checker\CheckerInterface;
 use AFM\Bundle\SiteStatusCheckerBundle\Exception\InvalidTokenException;
 use AFM\Bundle\SiteStatusCheckerBundle\Status\Status;
 use Symfony\Component\DependencyInjection\ContainerInterface;
+use ZendDiagnostics\Runner\Runner;
 
 class StatusChecker
 {
@@ -24,20 +25,14 @@ class StatusChecker
     protected $token;
 
     /**
-     * @var CheckerInterface[]
+     * @var Runner
      */
-    protected $checkers;
+    protected $runner;
 
-    /**
-     * @var ContainerInterface
-     */
-    protected $container;
-
-    public function __construct($token, $checkers, ContainerInterface $container)
+    public function __construct($token, Runner $runner)
     {
         $this->token = $token;
-        $this->checkers = $checkers;
-        $this->container = $container;
+        $this->runner = $runner;
     }
 
     public function performStatusCheck($token)
@@ -45,27 +40,13 @@ class StatusChecker
         if($token !== $this->token)
             throw new InvalidTokenException;
 
-        $status = true;
-        $statuses = array();
+        $this->runner->setBreakOnFailure(true);
+        $results = $this->runner->run();
+        $this->runner->setBreakOnFailure(false);
 
-        foreach($this->getCheckers() as $checker)
-        {
-            /** @var CheckerInterface $checker */
-            $checker = $this->container->get($checker);
-            $checkerStatus = $checker->getStatus();
+        if($results->getFailureCount() > 0)
+            return false;
 
-            $statuses[$checker->getName()] = $checkerStatus->getData();
-            $status = $status && $checkerStatus->getStatus();
-        }
-
-        return new Status($status, $statuses);
-    }
-
-    /**
-     * @return CheckerInterface[]
-     */
-    protected function getCheckers()
-    {
-        return $this->checkers;
+        return true;
     }
 }

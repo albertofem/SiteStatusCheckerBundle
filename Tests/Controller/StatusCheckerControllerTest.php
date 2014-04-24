@@ -34,16 +34,9 @@ class StatusCheckerControllerTest extends WebTestCase
 
         $client->request("GET", "/status/check/my_secure_token");
         $response = $client->getResponse();
-        $content = $response->getContent();
-
-        $expectedResponse = array(
-            'doctrine' => array(
-                'localhost' => true
-            )
-        );
 
         $this->assertEquals(200, $response->getStatusCode());
-        $this->assertEquals(json_encode($expectedResponse), $content);
+        $this->assertEquals("", $response->getContent());
     }
 
     public function testStatusTokenCorrectInvalidStatus()
@@ -52,16 +45,9 @@ class StatusCheckerControllerTest extends WebTestCase
 
         $client->request("GET", "/status/check/my_secure_token");
         $response = $client->getResponse();
-        $content = $response->getContent();
 
-        $expectedResponse = array(
-            'doctrine' => array(
-                'localhost' => false
-            )
-        );
-
-        $this->assertEquals(200, $response->getStatusCode());
-        $this->assertEquals(json_encode($expectedResponse), $content);
+        $this->assertEquals(500, $response->getStatusCode());
+        $this->assertEquals("", $response->getContent());
     }
 
     protected static function getPhpUnitXmlDir()

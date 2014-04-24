@@ -30,21 +30,9 @@ class SiteStatusCheckerExtension extends Extension
         $configuration = new Configuration();
         $configuration = $this->processConfiguration($configuration, $configs);
 
-        $loader = new YamlFileLoader($container, new FileLocator(__DIR__.'/../Resources/config'));
-
         $container->setParameter("afm.site_status_checker.token", $configuration['token']);
 
-        foreach($configuration['checkers'] as $key => $checker)
-        {
-            if(isset($this->internalCheckers[$checker]))
-            {
-                $configuration['checkers'][$key] = $this->internalCheckers[$checker];
-                $loader->load($checker . ".yml");
-            }
-        }
-
-        $container->setParameter("afm.site_status_checker.checkers", $configuration['checkers']);
-
+        $loader = new YamlFileLoader($container, new FileLocator(__DIR__.'/../Resources/config'));
         $loader->load('services.yml');
     }
 } 

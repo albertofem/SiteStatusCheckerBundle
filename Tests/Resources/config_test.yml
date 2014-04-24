@@ -6,8 +6,11 @@ framework:
 
 site_status_checker:
     token: my_secure_token
-    checkers:
-        - doctrine
+
+liip_monitor:
+    enable_controller: true
+    checks:
+        doctrine_dbal: default
 
 doctrine:
     dbal:

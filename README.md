@@ -50,6 +50,6 @@ status_checker:
 
 This will create a route under your prefix: `/status/check/{token}` which will return appropiate response codes:
 
-* `403`: invalid token
-* `200`: all checks performed correctly
-* `500`: some checks are failling
+* `403`: invalid token. Body content: `KO`
+* `200`: all checks performed correctly. Body content: `OK`
+* `500`: some checks are failling. Body content: `KO`

@@ -26,6 +26,7 @@ class StatusCheckerControllerTest extends WebTestCase
         $response = $client->getResponse();
 
         $this->assertEquals(403, $response->getStatusCode());
+        $this->assertEquals("KO", $response->getContent());
     }
 
     public function testStatusTokenCorrectValidStatus()
@@ -36,7 +37,7 @@ class StatusCheckerControllerTest extends WebTestCase
         $response = $client->getResponse();
 
         $this->assertEquals(200, $response->getStatusCode());
-        $this->assertEquals("", $response->getContent());
+        $this->assertEquals("OK", $response->getContent());
     }
 
     public function testStatusTokenCorrectInvalidStatus()
@@ -47,7 +48,7 @@ class StatusCheckerControllerTest extends WebTestCase
         $response = $client->getResponse();
 
         $this->assertEquals(500, $response->getStatusCode());
-        $this->assertEquals("", $response->getContent());
+        $this->assertEquals("KO", $response->getContent());
     }
 
     protected static function getPhpUnitXmlDir()

@@ -32,13 +32,13 @@ class StatusCheckerController extends Controller
         }
         catch(InvalidTokenException $exception)
         {
-            return new Response("", 403);
+            return new Response("KO", 403);
         }
         catch(\Exception $exception)
         {
-            return new Response("", 500);
+            return new Response("KO", 500);
         }
 
-        return new Response("", $status ? 200 : 500);
+        return new Response($status ? "OK" : "KO", $status ? 200 : 500);
     }
 } 

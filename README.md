@@ -1,7 +1,7 @@
 SiteStatusCheckerBundle
 =======================
 
-[![build status](https://secure.travis-ci.org/albertofem/SiteStatusCheckerBundle.png)](http://travis-ci.org/albertofem/SiteStatusCheckerBundle)
+[![build status](https://secure.travis-ci.org/albertofem/SiteStatusCheckerBundle.png)](http://travis-ci.org/albertofem/SiteStatusCheckerBundle) [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/albertofem/SiteStatusCheckerBundle/badges/quality-score.png?s=2cb86542946e37524ebb9a3f16674951ce59011d)](https://scrutinizer-ci.com/g/albertofem/SiteStatusCheckerBundle/)
 
 Symfony2 bundle to perform site status, relying on `LiipMonitorBundle`. It's specifically made for ping services, like the one from New Relic.
 

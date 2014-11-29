@@ -37,15 +37,17 @@ class StatusChecker
 
     public function performStatusCheck($token)
     {
-        if($token !== $this->token)
+        if ($token !== $this->token) {
             throw new InvalidTokenException;
+        }
 
         $this->runner->setBreakOnFailure(true);
         $results = $this->runner->run();
         $this->runner->setBreakOnFailure(false);
 
-        if($results->getFailureCount() > 0)
+        if ($results->getFailureCount() > 0) {
             return false;
+        }
 
         return true;
     }

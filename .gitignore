@@ -2,3 +2,6 @@ vendor/
 phpunit.xml
 Tests/cache*
 Tests/logs
+composer.lock
+composer.phar
+phpunit.xml
